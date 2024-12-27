@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Learning Roadmap</title>
+  <style>
+    /* Global Reset and Body Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      padding: 30px 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #4d4d4d;
+      margin-bottom: 40px;
+    }
+
+    /* Roadmap layout */
+    .roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .roadmap .level {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      background: #e3e6e8;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .roadmap .level:hover {
+      background: #8ca6b5;
+      transform: translateY(-5px);
+    }
+
+    .level h3 {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #1c4a6b;
+    }
+
+    .level p {
+      font-size: 1rem;
+      color: #4b5f73;
+    }
+
+    /* Connecting Lines */
+    .pipe {
+      height: 2px;
+      background-color: #b1b6c1;
+      flex-grow: 1;
+      align-self: center;
+    }
+
+    /* Coming Soon Page (Centered Message) */
+    .coming-soon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      background-color: #fff;
+    }
+
+    .coming-soon h2 {
+      font-size: 2.5rem;
+      color: #3b4e69;
+      margin-bottom: 15px;
+    }
+
+    .coming-soon p {
+      font-size: 1.2rem;
+      color: #5a6b7c;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      padding: 10px 20px;
+      background-color: #5a8289;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #3b5c5a;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .roadmap {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .roadmap .level {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>DSA Learning Roadmap</h1>
+
+    <!-- Roadmap Layout -->
+    <div class="roadmap">
+      <div class="level" onclick="showComingSoon()">
+        <h3>Introduction to DSA</h3>
+        <p>Basic Concepts, Time & Space Complexity</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Arrays</h3>
+        <p>Array Operations, Traversing, Sliding Window</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Strings</h3>
+        <p>String Matching, Palindrome, Anagram Checking</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Linked Lists</h3>
+        <p>Singly, Doubly, and Circular Linked Lists</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Stacks</h3>
+        <p>Stack Operations, Infix to Postfix</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Queues</h3>
+        <p>Queue Operations, BFS, Job Scheduling</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Recursion</h3>
+        <p>Recursion Basics, Factorial, Fibonacci</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Hashing</h3>
+        <p>Hash Tables, Collision Resolution</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coming Soon Page (Centered) -->
+  <div id="coming-soon-page" class="coming-soon" style="display:none;">
+    <h2>Hold Tight! 🚧</h2>
+    <p>We're busy building this page. Stay tuned for awesome resources coming your way!</p>
+    <a href="#" class="back-btn" onclick="goBack()">Back to Roadmap</a>
+  </div>
+
+  <script>
+    // Function to handle showing the "Coming Soon" message
+    function showComingSoon() {
+      // Hide the roadmap and show the coming soon page
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('coming-soon-page').style.display = 'flex';
+    }
+
+    // Back to Roadmap function
+    function goBack() {
+      document.querySelector('.container').style.display = 'block';
+      document.getElementById('coming-soon-page').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

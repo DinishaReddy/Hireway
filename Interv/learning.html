@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interv</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f1f1; 
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 30px;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #6b705c; 
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        header p {
+            font-size: 1.2rem;
+            color:  #e9ecef;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+        .section {
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            text-align: center;
+            padding: 20px;
+            background: #d1e4e8; /* Light muted color */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .section a {
+            display: block;
+            color: #6c757d; /* Muted dark gray */
+            font-size: 1.2rem;
+            text-decoration: none;
+            margin-top: 50px;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            font-style: italic;
+            color: #1c5173;
+            margin-right: auto; 
+
+    
+
+        }
+        .instructions {
+            font-size: 1rem;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Interv</div>
+        <p class="instructions">Start your learning adventure</p>
+    </header>
+    <div class="container">
+        <div class="section"><a href="dsa.html">Data Structures and Algorithms (DSA)</a></div>
+        <div class="section"><a href="networking.html">Computer Networks</a></div>
+        <div class="section"><a href="os.html">Operating Systems (OS)</a></div>
+        <div class="section"><a href="dbms.html">Database Management Systems (DBMS)</a></div>
+        <div class="section"><a href="design.html">System Design</a></div>
+        <div class="section"><a href="aptitude.html">Aptitude and Logical Reasoning</a></div>
+        <div class="section"><a href="ml.html">Machine Learning</a></div>
+    </div>
+   
+</body>
+</html>

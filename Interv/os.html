@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operating System Learning Roadmap</title>
+  <style>
+    /* Global Reset and Body Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f1f3;  /* Light, soft gray background */
+      color: #4f4a4a;  /* Muted dark gray text */
+      padding: 30px 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #3a3838;  /* Dark gray for headers */
+      margin-bottom: 40px;
+    }
+
+    /* Roadmap Layout */
+    .roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+
+    .roadmap .level {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      background: #e4e9f0;  /* Muted lavender blue for the level background */
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .roadmap .level:hover {
+      background: #d0d8eb;  /* Slightly darker lavender on hover */
+      transform: translateY(-5px);
+    }
+
+    .level h3 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #3c3b3b;  /* Soft charcoal for text */
+    }
+
+    .level p {
+      font-size: 1.1rem;
+      color: #7b7b7b;  /* Muted gray */
+    }
+
+    /* Connecting Lines (Pipes) */
+    .pipe {
+      height: 2px;
+      background-color: #d0d0d0;  /* Light gray for connecting lines */
+      flex-grow: 1;
+      align-self: center;
+    }
+
+    /* Coming Soon Page (Centered Message) */
+    .coming-soon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      background-color: #fff;
+    }
+
+    .coming-soon h2 {
+      font-size: 2.5rem;
+      color: #6c5b5b;  /* Soft brownish gray */
+      margin-bottom: 15px;
+    }
+
+    .coming-soon p {
+      font-size: 1.2rem;
+      color: #7b6c6c;  /* Muted brownish gray */
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      padding: 12px 25px;
+      background-color: #d79a5e;  /* Warm, muted orange */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #c6864d;  /* Slightly darker orange */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .roadmap {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .roadmap .level {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Operating System Learning Roadmap</h1>
+
+    <!-- Roadmap Layout -->
+    <div class="roadmap">
+      <div class="level" onclick="showComingSoon()">
+        <h3>Introduction to OS</h3>
+        <p>Overview, Types, Functions</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Process Management</h3>
+        <p>Scheduling, Context Switching</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Memory Management</h3>
+        <p>Virtual Memory, Paging</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>File Systems</h3>
+        <p>File Allocation, Directories</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Synchronization</h3>
+        <p>Locks, Semaphores</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Input/Output</h3>
+        <p>Disk Scheduling, Buffering</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Networking</h3>
+        <p>Protocols, Sockets</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coming Soon Page (Centered) -->
+  <div id="coming-soon-page" class="coming-soon" style="display:none;">
+    <h2>Hold Tight! 🚧</h2>
+    <p>We're busy building this page. Stay tuned for awesome resources coming your way!</p>
+    <a href="#" class="back-btn" onclick="goBack()">Back to Roadmap</a>
+  </div>
+
+  <script>
+    // Function to handle showing the "Coming Soon" message
+    function showComingSoon() {
+      // Hide the roadmap and show the coming soon page
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('coming-soon-page').style.display = 'flex';
+    }
+
+    // Back to Roadmap function
+    function goBack() {
+      document.querySelector('.container').style.display = 'block';
+      document.getElementById('coming-soon-page').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

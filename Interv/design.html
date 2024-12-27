@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Design Learning Roadmap</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Reset and Body Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f9f9f9;
+      color: #444;
+      padding: 30px 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #3c3f41;  /* Muted dark gray */
+      margin-bottom: 40px;
+    }
+
+    /* Roadmap Layout */
+    .roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+
+    .roadmap .level {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      background: #e9f7f1;  /* Light mint green background */
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .roadmap .level:hover {
+      background: #c4e6e0;  /* Slightly darker mint on hover */
+      transform: translateY(-5px);
+    }
+
+    .level h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #285e61;  /* Dark green for headings */
+    }
+
+    .level p {
+      font-size: 1.1rem;
+      color: #6d7d6b;  /* Muted gray-green */
+    }
+
+    /* Connecting Lines (Pipes) */
+    .pipe {
+      height: 2px;
+      background-color: #c4e6e0;  /* Light green for connecting lines */
+      flex-grow: 1;
+      align-self: center;
+    }
+
+    /* Coming Soon Page (Centered Message) */
+    .coming-soon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      background-color: #fff;
+    }
+
+    .coming-soon h2 {
+      font-size: 2.5rem;
+      color: #ff7043;  /* Muted coral for the title */
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .coming-soon p {
+      font-size: 1.2rem;
+      color: #7a7a7a;  /* Muted gray text */
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      padding: 12px 25px;
+      background-color: #ffb74d;  /* Soft orange-yellow */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #ff9800;  /* Slightly darker orange on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .roadmap {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .roadmap .level {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>System Design Learning Roadmap</h1>
+
+    <!-- Roadmap Layout -->
+    <div class="roadmap">
+      <div class="level" onclick="showComingSoon()">
+        <h3>Introduction to System Design</h3>
+        <p>What is system design? Basics, goals, and challenges</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Scalability</h3>
+        <p>Vertical vs Horizontal scaling, Load Balancing, Caching</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Data Models</h3>
+        <p>Relational, NoSQL, CAP Theorem, and Data Consistency</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Networking Basics</h3>
+        <p>HTTP, WebSockets, Load Balancer, API Rate Limiting</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Distributed Systems</h3>
+        <p>Replication, Sharding, Consensus Algorithms</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Design Patterns</h3>
+        <p>Microservices, Monolith, Event-Driven, CQRS</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>High Availability</h3>
+        <p>Fault Tolerance, Redundancy, Disaster Recovery</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Case Studies</h3>
+        <p>Designing Twitter, Netflix, Uber, and more!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coming Soon Page (Centered) -->
+  <div id="coming-soon-page" class="coming-soon" style="display:none;">
+    <h2>Hold Tight! 🚧</h2>
+    <p>We're busy building this page. Stay tuned for awesome resources coming your way!</p>
+    <a href="#" class="back-btn" onclick="goBack()">Back to Roadmap</a>
+  </div>
+
+  <script>
+    // Function to handle showing the "Coming Soon" message
+    function showComingSoon() {
+      // Hide the roadmap and show the coming soon page
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('coming-soon-page').style.display = 'flex';
+    }
+
+    // Back to Roadmap function
+    function goBack() {
+      document.querySelector('.container').style.display = 'block';
+      document.getElementById('coming-soon-page').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBMS Learning Roadmap</title>
+
+  <!-- Link to Google Fonts (for better typography) -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Global Reset and Body Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f5f5f5;  /* Light soft background */
+      color: #444;  /* Muted dark gray text */
+      padding: 30px 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #4b4f54;  /* Subtle dark gray */
+      margin-bottom: 40px;
+    }
+
+    /* Roadmap Layout */
+    .roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .roadmap .level {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      background: #e8f5e9;  /* Light pastel green */
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .roadmap .level:hover {
+      background: #c8e6c9;  /* Slightly darker green */
+      transform: translateY(-5px);
+    }
+
+    .level h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #2e4c35;  /* Darker green for headers */
+    }
+
+    .level p {
+      font-size: 1.1rem;
+      color: #6d7d6b;  /* Muted green-gray for subtext */
+    }
+
+    /* Connecting Lines (Pipes) */
+    .pipe {
+      height: 2px;
+      background-color: #b8e6b1;  /* Light pastel green for pipes */
+      flex-grow: 1;
+      align-self: center;
+    }
+
+    /* Coming Soon Page (Centered Message) */
+    .coming-soon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      background-color: #fff;
+    }
+
+    .coming-soon h2 {
+      font-size: 2.5rem;
+      color: #ff8a65;  /* Muted coral for title */
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .coming-soon p {
+      font-size: 1.2rem;
+      color: #7a7a7a;  /* Muted gray */
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      padding: 12px 25px;
+      background-color: #ffb74d;  /* Soft orange-yellow */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #ff9800;  /* Slightly darker orange on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .roadmap {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .roadmap .level {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>DBMS Learning Roadmap</h1>
+
+    <!-- Roadmap Layout -->
+    <div class="roadmap">
+      <div class="level" onclick="showComingSoon()">
+        <h3>Introduction to DBMS</h3>
+        <p>Database Concepts, Types, and Models</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>SQL Basics</h3>
+        <p>SELECT, INSERT, UPDATE, DELETE</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Normalization</h3>
+        <p>1NF, 2NF, 3NF, BCNF</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Relational Algebra</h3>
+        <p>Operators, Set Operations</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Transactions</h3>
+        <p>ACID Properties, Commit/Rollback</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Indexes</h3>
+        <p>Indexing, B-Tree, Hashing</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Concurrency Control</h3>
+        <p>Locks, Deadlock, Isolation Levels</p>
+      </div>
+      <div class="pipe"></div>
+      <div class="level" onclick="showComingSoon()">
+        <h3>Distributed DBMS</h3>
+        <p>Replication, Sharding, CAP Theorem</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coming Soon Page (Centered) -->
+  <div id="coming-soon-page" class="coming-soon" style="display:none;">
+    <h2>Hold Tight! 🚧</h2>
+    <p>We're busy building this page. Stay tuned for awesome resources coming your way!</p>
+    <a href="#" class="back-btn" onclick="goBack()">Back to Roadmap</a>
+  </div>
+
+  <script>
+    // Function to handle showing the "Coming Soon" message
+    function showComingSoon() {
+      // Hide the roadmap and show the coming soon page
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('coming-soon-page').style.display = 'flex';
+    }
+
+    // Back to Roadmap function
+    function goBack() {
+      document.querySelector('.container').style.display = 'block';
+      document.getElementById('coming-soon-page').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

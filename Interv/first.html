@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interv</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('interviewbg.png'), url('map.png'); 
+            background-position: bottom left, bottom right; 
+            background-repeat: no-repeat, no-repeat; 
+            background-attachment: fixed, fixed; 
+            background-size: 15%, 12%; 
+            opacity: 0.5; 
+            z-index: -1; 
+        }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            font-style: italic;
+            color: #1c5173;
+            margin-right: auto;
+        }
+        .instructions {
+            font-size: 1rem;
+            color: #666666;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 140px auto;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+        .section {
+            flex: 1;
+            max-width: 400px;
+            margin: 10px;
+            padding: 110px; 
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #000000;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .companies {
+            background-color: #A9C9D5;
+        }
+        .students {
+            background-color: #C6B0D4;
+        }
+        .login-btn {
+            display: inline-block;
+            margin-top: 20px; /* Adds space above the button */
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #fff;
+            background-color: #1c5173;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .login-btn:hover {
+            background-color: #154b63;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Interv</div>
+        <p class="instructions">Choose your path: Click on the 'Interview' container to begin the recruitment process, or the 'Learning' container to kickstart your career.</p>
+    </header>
+
+    <div class="container">
+        <!-- Company Interview Section -->
+        <div class="section companies">
+            <h2>Company Interview</h2>
+            <p>Efficient tools for companies to evaluate and analyze candidates seamlessly.</p>
+            <!-- Login Button Inside the Section -->
+            <button class="login-btn" onclick="window.location.href='companies.html';">Login as Company</button>
+        </div>
+
+        <!-- Student Learning Section -->
+        <div class="section students">
+            <h2>Learning Platform for Students</h2>
+            <p>Personalized learning paths and expert resources for students to excel.</p>
+            <!-- Login Button Inside the Section -->
+            <button class="login-btn" onclick="window.location.href='students.html';">Login as Student</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interv</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333333;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('interviewbg.png');
+            background-repeat: no-repeat;
+            background-position:  bottom left;
+            background-size: 90%;
+            opacity: 0.06;
+            z-index: -1;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            font-style: italic;
+            color: #1c5173;
+            margin-right: auto;
+        }
+        .instructions {
+            font-size: 1rem;
+            color: #666666;
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 140px auto;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .section {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            margin: 20px;
+            padding: 80px;
+            border-radius: 30px;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #000000;
+        }
+        /* .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+        } */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+       
+        .learning {
+            background: #a1c7ae ;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .learning:hover {
+            transform: rotate(0deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            background-color: #A1CDA1;
+        }
+        .learning::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .mock-test {
+            background: #f5ae94;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .mock-test:hover {
+            transform: rotate(0deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            background-color: #F1A097;
+        }
+        .mock-test::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Interv</div>
+        <p class="instructions">Choose your path: Click on 'Start Learning' to begin your journey, or 'Take Mock Test' to test your skills.</p>
+    </header>
+
+    <div class="container">
+        <!-- Learning Section -->
+        <a href="learning.html" class="section learning">
+            <h2>Start Learning</h2>
+            <p>Begin your learning journey with resources tailored for technical interviews. Master the skills you need to succeed!</p>
+        </a>
+
+        <!-- Mock Test Section -->
+        <a href="mocktest.html" class="section mock-test">
+            <h2>Take Mock Test</h2>
+            <p>Test your skills with mock interviews and assess your readiness for real-world technical challenges.</p>
+        </a>
+    </div>
+</body>
+</html>
