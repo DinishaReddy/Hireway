@@ -1,204 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Meeting Video Feed, Python Compiler, and GitHub Clone</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-     <title>Interv</title>
+        /* Main Layout Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            justify-content: flex-start;
+            align-items: stretch;
+            background-color: #f4f4f4;
+            padding: 20px;
+            flex-direction: row; /* Align content horizontally */
+            gap: 20px; /* Add space between the video and content sections */
+        }
 
-     <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/font-awesome.min.css">
-     <link rel="stylesheet" href="css/owl.carousel.css">
-     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        /* Container for the video on the left */
+        .video-container {
+            width: 45%; /* Set the video container width to 45% */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-     <!-- MAIN CSS -->
-     <link rel="stylesheet" href="css/templatemo-style.css">
+        /* Video styling */
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
 
-</head>s
+        /* Content container for Python editor and GitHub section */
+        .content {
+            width: 55%; /* Set the content container width to 55% */
+            padding: 20px;
+            background-color: #fff; /* Set white background for the whole content */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
 
-     <!-- MENU -->
-     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-          <div class="container">
+        p {
+            font-size: 1.1em;
+            color: #555;
+        }
 
-               <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span> 
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
+        /* Code Editor */
+        .compiler-section {
+            width: 100%;
+            background-color: #1e1e1e; /* Dark background for the compiler section */
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-                    <!-- lOGO TEXT HERE -->
-                    <a href="#" class="navbar-brand">Interv</a>
-               </div>
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #000;
+            color: white;
+            resize: vertical;
+            font-family: 'Courier New', monospace;
+        }
 
-               <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-nav-first">
-                         <li><a href="#top" class="smoothScroll">Home</a></li>
-                         <li><a href="#about" class="smoothScroll">About</a></li>
-                         <li><a href="#contact" class="smoothScroll">Contact</a></li>
-                    </ul>
-               </div>
+        /* Buttons and Output Section */
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-          </div>
-     </section>
+        button:hover {
+            background-color: #45a049;
+        }
 
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
 
-     <!-- HOME -->
-     <section id="home">
-          <div class="row">
+        #error {
+            color: red;
+        }
 
-                    <div class="owl-carousel owl-theme home-slider">
-                         <div class="item item-first">
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                             <h1>Effortless Interviewing with Integrated Tools</h1>
-                                             <h3>Conduct real-time coding challenges, review GitHub projects, and track candidate performance with an integrated evaluation form.</h3>
-                                             <a href="first.html" class="section-btn btn btn-default smoothScroll">Explore now</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+        /* Toggle Buttons for Camera and Mic */
+        .toggle-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
 
-                         <div class="item item-second">
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                             <h1> Interview Preparation for Students</h1>
-                                             <h3>Equip students with detailed roadmaps and mock tests to boost their coding confidence. Our platform helps them gauge their skills and prepares them for the challenges they’ll face in real-world technical interviews.</h3>
-                                             <a href="first.html" class="section-btn btn btn-default smoothScroll">Explore Now</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+        .toggle-buttons button {
+            background-color: #f44336;
+        }
 
+        .toggle-buttons button.enabled {
+            background-color: #4CAF50;
+        }
 
-                    </div>
-          </div>
-     </section>
+        /* GitHub Clone Section */
+        .github-clone {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
+        .github-clone input {
+            width: 80%;
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
 
-     <!-- FEATURE -->
-     <section id="feature">
-          <div class="container">
-               <div class="row">
+        .github-clone button {
+            width: 18%;
+            padding: 10px;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-                    <div class="col-md-4 col-sm-4">
-                         <div class="feature-thumb">
-                              <span>01</span>
-                              <h3>Streamlined Interviews</h3>
-                              <p> Efficient interview process with integrated compilers and GitHub project review.</p>
-                         </div>
-                    </div>
+        .github-clone button:hover {
+            background-color: #0056b3;
+        }
 
-                    <div class="col-md-4 col-sm-4">
-                         <div class="feature-thumb">
-                              <span>02</span>
-                              <h3>Real-Time Evaluation</h3>
-                              <p>Easy access to a form for evaluating candidates during interviews.</p>
-                         </div>
-                    </div>
+        .repo-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
 
-                    <div class="col-md-4 col-sm-4">
-                         <div class="feature-thumb">
-                              <span>03</span>
-                              <h3>Student Preparation:</h3>
-                              <p>Roadmaps and mock tests to help students get interview-ready.</p>
-                         </div>
-                    </div>
+        .repo-info h2 {
+            font-size: 1.5em;
+            color: #333;
+        }
 
-               </div>
-          </div>
-     </section>
+        .repo-info p {
+            font-size: 1.1em;
+            color: #555;
+        }
 
-     <!-- ABOUT -->
-     <section id="about">
-          <div class="container">
-               <div class="row">
+        .repo-info ul {
+            margin-top: 10px;
+        }
 
-                    <div class="col-md-6 col-sm-12">
-                         <div class="about-info">
-                              <h2> Unlock Career Success with Interv</h2>
+        .repo-info ul li {
+            font-size: 1.1em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
 
-                              <figure>
-                                   <span><i class="fa fa-users"></i></span>
-                                   <figcaption>
-                                        <h3>Streamlined Hiring</h3>
-                                        <p>Run coding challenges, review GitHub projects, and track performance with instant feedback for streamlined hiring.</p>
-                                   </figcaption>
-                              </figure>
+    <!-- Video Container (Left Side) -->
+    <div class="video-container">
+        <video id="video" autoplay playsinline></video>
 
-                              <figure>
-                                   <span><i class="fa fa-certificate"></i></span>
-                                   <figcaption>
-                                        <h3>Comprehensive Preparation</h3>
-                                        <p>Access roadmaps, mock tests, and get instant feedback to improve your coding skills and interview readiness.</p>
-                                   </figcaption>
-                              </figure>
+        <!-- Toggle Buttons for Camera and Mic -->
+        <div class="toggle-buttons">
+            <button id="camera-toggle" onclick="toggleCamera()">Enable Camera</button>
+            <button id="mic-toggle" onclick="toggleMic()">Enable Mic</button>
+        </div>
+    </div>
 
-                              <figure>
-                                   <span><i class="fa fa-bar-chart-o"></i></span>
-                                   <figcaption>
-                                        <h3>Complimentary Content Access</h3>
-                                        <p>This offer grants full, cost-free access to services, enabling users to explore and benefit from them without financial obligation.</p>
-                                   </figcaption>
-                              </figure>
-                         </div>
-                    </div>
-                         <div>
-                              <img src="thinking.png" class="img-responsive" alt="" style="height: 400px;  padding-top: 8%; padding-left: 100px;">
-                          </div>
-               </div>
-          </div>
-     </section>
+    <!-- Content Container (Right Side) -->
+    <div class="content">
+        <!-- Python Compiler Section -->
+        <div class="compiler-section">
+            <h1>Python Compiler</h1>
+            <textarea id="python-code" placeholder="Write your Python code here..."></textarea>
+            <button onclick="runPythonCode()">Run Code</button>
 
+            <!-- Output Section -->
+            <div id="output"></div>
+            <div id="error"></div>
+        </div>
 
+        <!-- GitHub Clone Section -->
+        <div class="github-clone">
+            <h1>GitHub Repository Clone</h1>
+            <p>Enter a GitHub username/repository name (e.g., user/repo):</p>
+            <input type="text" id="repo-input" placeholder="user/repo">
+            <button onclick="fetchRepoData()">Fetch Repository</button>
 
-     <!-- CONTACT -->
-     <section id="contact">
-          <div class="container">
-               <div class="row">
+            <div class="repo-info" id="repo-info"></div>
+        </div>
+    </div>
 
-                    <div class="col-md-6 col-sm-12">
-                         <form id="contact-form" role="form" action="" method="post">
-                              <div class="section-title">
-                                   <h2>Contact us </h2>
-                              </div>
+    <script>
+        let videoStream = null;
+        let audioStream = null;
 
-                              <div class="col-md-12 col-sm-12">
-                                   <input type="text" class="form-control" placeholder="Enter full name" name="name" required="">
-                    
-                                   <input type="email" class="form-control" placeholder="Enter email address" name="email" required="">
+        // Accessing the webcam and displaying it in the video element
+        async function startVideo() {
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-                                   <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required=""></textarea>
-                              </div>
+                const videoElement = document.getElementById('video');
+                videoElement.srcObject = videoStream;
 
-                              <div class="col-md-4 col-sm-12">
-                                   <input type="submit" class="form-control" name="send message" value="Send Message">
-                              </div>
+                document.getElementById('camera-toggle').textContent = 'Disable Camera';
+                document.getElementById('camera-toggle').classList.add('enabled');
+                document.getElementById('mic-toggle').textContent = 'Disable Mic';
+                document.getElementById('mic-toggle').classList.add('enabled');
+            } catch (err) {
+                console.error('Error accessing webcam: ', err);
+                alert('Failed to access the webcam. Please check your camera and microphone settings.');
+            }
+        }
 
-                         </form>
-                    </div>
+        // Toggle the camera on/off
+        function toggleCamera() {
+            const videoTrack = videoStream.getVideoTracks()[0];
 
-                    <div class="col-md-6 col-sm-12">
-                         <div class="contact-image">
-                              <img src="sitting.png" class="img-responsive" alt="Smiling Two Girls">
-                         </div>
-                    </div>
+            if (videoTrack.enabled) {
+                videoTrack.enabled = false;
+                document.getElementById('camera-toggle').textContent = 'Enable Camera';
+                document.getElementById('camera-toggle').classList.remove('enabled');
+            } else {
+                videoTrack.enabled = true;
+                document.getElementById('camera-toggle').textContent = 'Disable Camera';
+                document.getElementById('camera-toggle').classList.add('enabled');
+            }
+        }
 
-               </div>
-          </div>
-     </section>       
+        // Toggle the microphone on/off
+        function toggleMic() {
+            const audioTrack = audioStream.getAudioTracks()[0];
 
+            if (audioTrack.enabled) {
+                audioTrack.enabled = false;
+                document.getElementById('mic-toggle').textContent = 'Enable Mic';
+                document.getElementById('mic-toggle').classList.remove('enabled');
+            } else {
+                audioTrack.enabled = true;
+                document.getElementById('mic-toggle').textContent = 'Disable Mic';
+                document.getElementById('mic-toggle').classList.add('enabled');
+            }
+        }
 
-    
+        // Start the video feed once the page is loaded
+        window.onload = startVideo;
 
-     <!-- SCRIPTS -->
-     <script src="js/jquery.js"></script>
-     <script src="js/bootstrap.min.js"></script>
-     <script src="js/owl.carousel.min.js"></script>
-     <script src="js/smoothscroll.js"></script>
-     <script src="js/custom.js"></script>
+        // Function to send Python code to the backend and get the result
+        async function runPythonCode() {
+            const code = document.getElementById('python-code').value;
+            document.getElementById('output').textContent = '';
+            document.getElementById('error').textContent = '';
+
+            try {
+                const response = await fetch('http://localhost:5000/run_code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code: code })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    document.getElementById('output').textContent = result.output;
+                } else {
+                    document.getElementById('error').textContent = result.error;
+                }
+            } catch (err) {
+                document.getElementById('error').textContent = 'Error: ' + err.message;
+            }
+        }
+
+        // Fetch GitHub repository data
+        async function fetchRepoData() {
+            const repoInput = document.getElementById('repo-input').value;
+            const repoInfoDiv = document.getElementById('repo-info');
+
+            if (!repoInput) {
+                alert('Please enter a GitHub repository.');
+                return;
+            }
+
+            const url = `https://api.github.com/repos/${repoInput}`;
+
+            try {
+                const response = await fetch(url);
+                const repoData = await response.json();
+
+                if (response.ok) {
+                    // Show repository details
+                    repoInfoDiv.innerHTML = `
+                        <h2>${repoData.name}</h2>
+                        <p><strong>Description:</strong> ${repoData.description || 'No description available'}</p>
+                        <p><strong>Stars:</strong> ${repoData.stargazers_count}</p>
+                        <p><strong>Forks:</strong> ${repoData.forks_count}</p>
+                        <p><strong>URL:</strong> <a href="${repoData.html_url}" target="_blank">${repoData.html_url}</a></p>
+                        <h3>Files:</h3>
+                        <ul id="file-list"></ul>
+                    `;
+                    // Fetch the files in the repository
+                    const contents = await fetch(repoData.contents_url.replace('{+path}', ''));
+                    const files = await contents.json();
+
+                    const fileList = document.getElementById('file-list');
+                    files.forEach(file => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = file.name;
+                        fileList.appendChild(listItem);
+                    });
+                } else {
+                    repoInfoDiv.innerHTML = `<p>Error: ${repoData.message}</p>`;
+                }
+            } catch (err) {
+                console.error(err);
+                repoInfoDiv.innerHTML = `<p>Error fetching repository data.</p>`;
+            }
+        }
+    </script>
 
 </body>
 </html>
